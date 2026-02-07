@@ -28,18 +28,14 @@ body{
   border-radius:25px;
   text-align:center;
   width:90%;max-width:350px;
-  animation:zoomIn 1s ease;
+  animation:zoom 1s ease;
 }
 .lock-box h2{color:#d6336c}
 .lock-box input,.lock-box button{
-  width:100%;padding:12px;
-  border-radius:30px;margin-top:15px;
-  border:none;font-size:16px;
+  width:100%;padding:12px;border-radius:30px;
+  margin-top:15px;border:none;font-size:16px;
 }
-.lock-box button{
-  background:#ff4d6d;color:white;
-  box-shadow:0 0 15px #ff4d6d;
-}
+.lock-box button{background:#ff4d6d;color:white}
 
 /* CARD */
 .page{
@@ -55,12 +51,15 @@ body{
   position:relative;z-index:2;
 }
 
-.rose{
-  font-size:64px;
-  animation:float 2.5s ease-in-out infinite;
+.big{
+  font-size:70px;
+  animation:pop 1s ease;
 }
-@keyframes float{
-  50%{transform:translateY(-12px)}
+
+@keyframes pop{
+  0%{transform:scale(0)}
+  80%{transform:scale(1.2)}
+  100%{transform:scale(1)}
 }
 
 h1{color:#d6336c}
@@ -74,7 +73,6 @@ p{color:#444;line-height:1.7}
   background:#ff4d6d;
   color:white;
   font-size:15px;
-  box-shadow:0 0 12px #ff4d6d;
 }
 
 /* FALLING */
@@ -83,16 +81,13 @@ p{color:#444;line-height:1.7}
   animation:fall linear infinite;
   opacity:.85;
 }
-@keyframes fall{
-  to{transform:translateY(110vh)}
-}
+@keyframes fall{to{transform:translateY(110vh)}}
 
-/* EXTRA ANIMATIONS */
 @keyframes fadeZoom{
   from{opacity:0;transform:scale(.9)}
   to{opacity:1;transform:scale(1)}
 }
-@keyframes zoomIn{
+@keyframes zoom{
   from{transform:scale(.7);opacity:0}
   to{transform:scale(1);opacity:1}
 }
@@ -112,25 +107,59 @@ p{color:#444;line-height:1.7}
 
 <!-- PAGE 1 -->
 <div class="page" id="p1">
-  <div class="rose">🌹</div>
+  <div class="big">🌹</div>
   <h1>Happy Rose Day, Piya</h1>
-  <p>A rose is not just a flower,<br>it’s a feeling made for you.</p>
+  <p>
+    “Mohabbat bhi zindagi ki tarah hoti hai,<br>
+    har mod aasaan nahi hota…”
+  </p>
   <button class="nav" onclick="show(2)">Next ➡</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page" id="p2">
-  <h1>💖 Dear Piya</h1>
-  <p>Your smile turns moments into memories.<br>You are special — always.</p>
+  <h1>💖 Bollywood Mode On</h1>
+  <p>
+    “Agar tum saath ho,<br>
+    toh har din Rose Day hai.”
+  </p>
   <button class="nav" onclick="show(1)">⬅ Back</button>
   <button class="nav" onclick="show(3)">Next ➡</button>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 (TEDDY) -->
 <div class="page" id="p3">
-  <h1>🌹 Always for You</h1>
-  <p>This rose, this page,<br>and this heart — all yours 💖</p>
+  <div class="big">🧸</div>
+  <h1>Teddy for You</h1>
+  <p>
+    Jab main paas nahi hota,<br>
+    yeh teddy meri jagah hug karega 🤍
+  </p>
   <button class="nav" onclick="show(2)">⬅ Back</button>
+  <button class="nav" onclick="show(4)">Next ➡</button>
+</div>
+
+<!-- PAGE 4 (ROSE POP) -->
+<div class="page" id="p4">
+  <div class="big">🌹🌹</div>
+  <h1>Rose Just Popped!</h1>
+  <p>
+    “Phool sirf dene ke liye nahi hote,<br>
+    kuch yaadein ban jaate hain.”
+  </p>
+  <button class="nav" onclick="show(3)">⬅ Back</button>
+  <button class="nav" onclick="show(5)">Next ➡</button>
+</div>
+
+<!-- PAGE 5 (CHOCOLATE) -->
+<div class="page" id="p5">
+  <div class="big">🍫</div>
+  <h1>Chocolate Surprise</h1>
+  <p>
+    Thodi si sweetness tumhari tarah,<br>
+    kyunki zindagi bhi meethi hai 💖
+  </p>
+  <button class="nav" onclick="show(4)">⬅ Back</button>
 </div>
 
 <script>
@@ -150,12 +179,12 @@ function show(n){
 }
 
 function fall(){
-  for(let i=0;i<30;i++){
+  for(let i=0;i<35;i++){
     let e=document.createElement("div");
     e.className="drop";
     e.innerText=Math.random()>.5?"🌹":"💖";
     e.style.left=Math.random()*100+"vw";
-    e.style.fontSize=(18+Math.random()*14)+"px";
+    e.style.fontSize=(18+Math.random()*16)+"px";
     e.style.animationDuration=(5+Math.random()*5)+"s";
     document.body.appendChild(e);
   }
