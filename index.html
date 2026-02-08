@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Rose Day 🌹</title>
+<title>Happy Propose Day 💍</title>
 
 <style>
 *{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+
 body{
-  margin:0;min-height:100vh;
+  margin:0;
+  min-height:100vh;
   background:linear-gradient(135deg,#ff9a9e,#fad0c4);
   overflow:hidden;
 }
@@ -16,47 +18,47 @@ body{
 /* LOCK SCREEN */
 .lock{
   position:fixed;inset:0;
-  display:flex;justify-content:center;align-items:center;
+  display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#ff758c,#ff7eb3);
   z-index:10;
 }
 .lock-box{
   background:white;
-  padding:32px;
+  padding:30px;
   width:90%;max-width:340px;
   border-radius:30px;
   text-align:center;
   animation:heartbeat 2s infinite;
-  box-shadow:0 20px 50px rgba(0,0,0,.3);
 }
 .lock-box h2{color:#d6336c}
-.lock-box input{
-  width:100%;padding:14px;
-  border-radius:30px;border:2px solid #ff4d6d;
-  margin-top:18px;font-size:16px;
-}
-.lock-box button{
+.lock-box input,.lock-box button{
   width:100%;padding:14px;margin-top:18px;
-  border:none;border-radius:30px;
-  background:#ff4d6d;color:white;font-size:17px;
+  border-radius:30px;border:none;font-size:16px;
+}
+.lock-box input{border:2px solid #ff4d6d}
+.lock-box button{
+  background:#ff4d6d;color:white;
   animation:pulse 1.5s infinite;
 }
 
 @keyframes heartbeat{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.05)}
+  50%{transform:scale(1.06)}
 }
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(255,77,109,.6)}
-  100%{box-shadow:0 0 0 20px rgba(255,77,109,0)}
+  100%{box-shadow:0 0 0 22px rgba(255,77,109,0)}
 }
 
 /* FLOATING */
 .float{
-  position:fixed;top:-40px;
+  position:fixed;
+  top:-40px;
   animation:fall linear infinite;
 }
-@keyframes fall{to{transform:translateY(110vh)}}
+@keyframes fall{
+  to{transform:translateY(110vh)}
+}
 
 /* PAGES */
 .page{
@@ -64,12 +66,18 @@ body{
   background:white;
   width:90%;max-width:420px;
   margin:12vh auto;
-  padding:28px;
+  padding:26px;
   border-radius:28px;
   text-align:center;
   box-shadow:0 25px 45px rgba(0,0,0,.2);
-  animation:zoomIn .9s ease;
-  position:relative;z-index:2;
+  animation:zoomIn .8s ease;
+  position:relative;
+  z-index:2;
+}
+
+@keyframes zoomIn{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
 }
 
 .big{
@@ -80,32 +88,36 @@ body{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-12px)}
 }
-@keyframes zoomIn{
-  from{opacity:0;transform:scale(.8)}
-  to{opacity:1;transform:scale(1)}
+
+/* SPECIAL ANIMATIONS */
+.ring{animation:shine 2s infinite}
+@keyframes shine{
+  0%{filter:drop-shadow(0 0 0 gold)}
+  50%{filter:drop-shadow(0 0 12px gold)}
+  100%{filter:drop-shadow(0 0 0 gold)}
+}
+.teddy{animation:wobble 1.5s infinite}
+@keyframes wobble{
+  0%{transform:rotate(0)}
+  25%{transform:rotate(3deg)}
+  50%{transform:rotate(-3deg)}
+  100%{transform:rotate(0)}
 }
 
 h1{color:#d6336c}
 p{color:#444;line-height:1.7}
 
 .nav{
-  margin:10px;padding:12px 22px;
-  border-radius:30px;border:none;
-  background:#ff4d6d;color:white;
+  margin:10px;
+  padding:12px 22px;
+  border-radius:30px;
+  border:none;
+  background:#ff4d6d;
+  color:white;
   font-size:15px;
   transition:.3s;
 }
 .nav:hover{transform:scale(1.1)}
-
-/* SHAKE */
-.shake{animation:shake .4s}
-@keyframes shake{
-  0%{transform:translateX(0)}
-  25%{transform:translateX(-6px)}
-  50%{transform:translateX(6px)}
-  75%{transform:translateX(-6px)}
-  100%{transform:translateX(0)}
-}
 </style>
 </head>
 
@@ -113,8 +125,8 @@ p{color:#444;line-height:1.7}
 
 <!-- LOCK -->
 <div class="lock" id="lock">
-  <div class="lock-box" id="box">
-    <h2>🌹 For Piya 🌹</h2>
+  <div class="lock-box">
+    <h2>💖 For Piya 💖</h2>
     <input type="password" id="pass" placeholder="Enter password">
     <button onclick="unlock()">Unlock</button>
   </div>
@@ -122,44 +134,59 @@ p{color:#444;line-height:1.7}
 
 <!-- PAGE 1 -->
 <div class="page" id="p1">
-  <div class="big">🌹</div>
-  <h1>Happy Rose Day, Piya</h1>
-  <p>“Agar tum saath ho,<br> toh har din rose day hai.”</p>
+  <div class="big">💖</div>
+  <h1>Happy Propose Day</h1>
+  <p>
+    Hey Piya 😊<br>
+    Aaj kuch simple sa bolna tha…
+  </p>
   <button class="nav" onclick="show(2)">Next ➡</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page" id="p2">
-  <div class="big">💖</div>
-  <h1>Bollywood Feeling</h1>
-  <p>“Tum meri life ka woh scene ho,<br> jiske bina picture adhoori hai.”</p>
+  <div class="big">✨</div>
+  <h1>Just This</h1>
+  <p>
+    Tumhari smile cute hai,<br>
+    aur tum thodi si special bhi 😉
+  </p>
   <button class="nav" onclick="show(1)">⬅ Back</button>
   <button class="nav" onclick="show(3)">Next ➡</button>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page" id="p3">
-  <div class="big">🧸</div>
-  <h1>Teddy Hug</h1>
-  <p>Yeh teddy meri taraf se hug,<br> jab main paas na hoon 🤍</p>
+  <div class="big teddy">🧸</div>
+  <h1>Teddy Alert</h1>
+  <p>
+    Yeh teddy sirf dekhne ke liye nahi,<br>
+    thoda sa hug bhi maangta hai 🤍
+  </p>
   <button class="nav" onclick="show(2)">⬅ Back</button>
   <button class="nav" onclick="show(4)">Next ➡</button>
 </div>
 
 <!-- PAGE 4 -->
 <div class="page" id="p4">
-  <div class="big">🌹</div>
-  <h1>Rose Pop</h1>
-  <p>“Phool sirf dene ke liye nahi,<br> kuch yaadein ban jaate hain.”</p>
+  <div class="big ring">💍</div>
+  <h1>So…</h1>
+  <p>
+    Simple sa question hai 😅<br>
+    Kya tum meri gf banogi?
+  </p>
   <button class="nav" onclick="show(3)">⬅ Back</button>
   <button class="nav" onclick="show(5)">Next ➡</button>
 </div>
 
 <!-- PAGE 5 -->
 <div class="page" id="p5">
-  <div class="big">🍫</div>
-  <h1>Chocolate Surprise</h1>
-  <p>Tumhari smile jaise sweetness,<br> bilkul chocolate jaisi 🍫💖</p>
+  <div class="big">❤️</div>
+  <h1>That’s It</h1>
+  <p>
+    Pressure nahi 😄<br>
+    Bas yeh page aur main… tumhe pasand karte hain 💕
+  </p>
   <button class="nav" onclick="show(4)">⬅ Back</button>
 </div>
 
@@ -172,8 +199,7 @@ function unlock(){
     show(1);
     rain();
   }else{
-    box.classList.add("shake");
-    setTimeout(()=>box.classList.remove("shake"),400);
+    alert("Oops 😅 try again");
   }
 }
 
@@ -183,13 +209,13 @@ function show(n){
 }
 
 function rain(){
-  for(let i=0;i<40;i++){
+  for(let i=0;i<45;i++){
     let e=document.createElement("div");
     e.className="float";
-    e.innerText=Math.random()>.5?"🌹":"💖";
+    e.innerText=Math.random()>.5?"💖":"✨";
     e.style.left=Math.random()*100+"vw";
-    e.style.fontSize=(18+Math.random()*18)+"px";
-    e.style.animationDuration=(5+Math.random()*6)+"s";
+    e.style.fontSize=(16+Math.random()*20)+"px";
+    e.style.animationDuration=(4+Math.random()*6)+"s";
     document.body.appendChild(e);
   }
 }
