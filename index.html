@@ -3,221 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Propose Day 💍</title>
+<title>Happy Chocolate Day 🍫</title>
 
 <style>
-*{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-
-body{
-  margin:0;
-  min-height:100vh;
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-  overflow:hidden;
+/* ===== GLOBAL ===== */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(270deg, #3b1d1d, #6b2f2f, #3b1d1d);
+  background-size: 600% 600%;
+  animation: bg 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+@keyframes bg {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-/* LOCK SCREEN */
-.lock{
-  position:fixed;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3);
-  z-index:10;
+/* ===== FLOATING HEARTS ===== */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.6;
 }
-.lock-box{
-  background:white;
-  padding:30px;
-  width:90%;max-width:340px;
-  border-radius:30px;
-  text-align:center;
-  animation:heartbeat 2s infinite;
-}
-.lock-box h2{color:#d6336c}
-.lock-box input,.lock-box button{
-  width:100%;padding:14px;margin-top:18px;
-  border-radius:30px;border:none;font-size:16px;
-}
-.lock-box input{border:2px solid #ff4d6d}
-.lock-box button{
-  background:#ff4d6d;color:white;
-  animation:pulse 1.5s infinite;
+@keyframes float {
+  0% {transform: translateY(0); opacity:0}
+  50% {opacity:1}
+  100% {transform: translateY(-110vh); opacity:0}
 }
 
-@keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.06)}
+/* ===== CARD ===== */
+.card {
+  width: 92%;
+  max-width: 420px;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  text-align: center;
+  color: #fff;
+  animation: pop 0.6s ease;
 }
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(255,77,109,.6)}
-  100%{box-shadow:0 0 0 22px rgba(255,77,109,0)}
-}
-
-/* FLOATING */
-.float{
-  position:fixed;
-  top:-40px;
-  animation:fall linear infinite;
-}
-@keyframes fall{
-  to{transform:translateY(110vh)}
-}
-
-/* PAGES */
-.page{
-  display:none;
-  background:white;
-  width:90%;max-width:420px;
-  margin:12vh auto;
-  padding:26px;
-  border-radius:28px;
-  text-align:center;
-  box-shadow:0 25px 45px rgba(0,0,0,.2);
-  animation:zoomIn .8s ease;
-  position:relative;
-  z-index:2;
+@keyframes pop {
+  from {transform: scale(0.9); opacity:0}
+  to {transform: scale(1); opacity:1}
 }
 
-@keyframes zoomIn{
-  from{opacity:0;transform:scale(.85)}
-  to{opacity:1;transform:scale(1)}
+h1 {
+  margin-top: 0;
+  color: #ffd6d6;
 }
 
-.big{
-  font-size:72px;
-  animation:bounce 2s infinite;
+/* ===== LOCK ===== */
+input {
+  width: 80%;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
 }
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+button {
+  margin-top: 16px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg,#ff8fa3,#ff4d6d);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+button:active {
+  transform: scale(0.95);
 }
 
-/* SPECIAL ANIMATIONS */
-.ring{animation:shine 2s infinite}
-@keyframes shine{
-  0%{filter:drop-shadow(0 0 0 gold)}
-  50%{filter:drop-shadow(0 0 12px gold)}
-  100%{filter:drop-shadow(0 0 0 gold)}
-}
-.teddy{animation:wobble 1.5s infinite}
-@keyframes wobble{
-  0%{transform:rotate(0)}
-  25%{transform:rotate(3deg)}
-  50%{transform:rotate(-3deg)}
-  100%{transform:rotate(0)}
+/* ===== WALLET ===== */
+.wallet {
+  background: rgba(0,0,0,0.3);
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 16px;
 }
 
-h1{color:#d6336c}
-p{color:#444;line-height:1.7}
-
-.nav{
-  margin:10px;
-  padding:12px 22px;
-  border-radius:30px;
-  border:none;
-  background:#ff4d6d;
-  color:white;
-  font-size:15px;
-  transition:.3s;
+/* ===== CHOCOLATES ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
 }
-.nav:hover{transform:scale(1.1)}
+.choco {
+  background: rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+.choco:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+.choco span {
+  font-size: 36px;
+  display: block;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal-box {
+  background: #fff;
+  color: #333;
+  padding: 24px;
+  border-radius: 24px;
+  width: 85%;
+  max-width: 320px;
+  text-align: center;
+  animation: pop 0.4s ease;
+}
+.modal-box h2 {
+  color: #ff4d6d;
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOCK -->
-<div class="lock" id="lock">
-  <div class="lock-box">
-    <h2>💖 For Piya 💖</h2>
-    <input type="password" id="pass" placeholder="Enter password">
-    <button onclick="unlock()">Unlock</button>
+<!-- FLOATING HEARTS -->
+<script>
+for(let i=0;i<15;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDelay=Math.random()*5+"s";
+  h.innerHTML="💖";
+  document.body.appendChild(h);
+}
+</script>
+
+<!-- LOCK PAGE -->
+<div class="card" id="lock">
+  <h1>🍫 Chocolate Day</h1>
+  <p>For someone special 💖</p>
+  <input id="pass" placeholder="Enter password">
+  <br>
+  <button onclick="unlock()">Unlock</button>
+</div>
+
+<!-- SHOP -->
+<div class="card" id="shop" style="display:none">
+  <h1>Happy Chocolate Day 🍫</h1>
+
+  <div class="wallet">
+    💰 Wallet: ₹<span id="money">100</span>
+  </div>
+
+  <p>Choose a chocolate 🍫<br>Each costs ₹100</p>
+
+  <div class="grid">
+    <div class="choco" onclick="buy(0)"><span>🍫</span>Dairy Love</div>
+    <div class="choco" onclick="buy(1)"><span>🍩</span>Choco Donut</div>
+    <div class="choco" onclick="buy(2)"><span>🍪</span>Choco Cookie</div>
+    <div class="choco" onclick="buy(3)"><span>🍰</span>Choco Cake</div>
+    <div class="choco" onclick="buy(4)"><span>🍬</span>Choco Candy</div>
+    <div class="choco" onclick="buy(5)"><span>🧁</span>Choco Cupcake</div>
   </div>
 </div>
 
-<!-- PAGE 1 -->
-<div class="page" id="p1">
-  <div class="big">💖</div>
-  <h1>Happy Propose Day</h1>
-  <p>
-    Hey Piya 😊<br>
-    Aaj kuch simple sa bolna tha…
-  </p>
-  <button class="nav" onclick="show(2)">Next ➡</button>
-</div>
-
-<!-- PAGE 2 -->
-<div class="page" id="p2">
-  <div class="big">✨</div>
-  <h1>Just This</h1>
-  <p>
-    Tumhari smile cute hai,<br>
-    aur tum thodi si special bhi 😉
-  </p>
-  <button class="nav" onclick="show(1)">⬅ Back</button>
-  <button class="nav" onclick="show(3)">Next ➡</button>
-</div>
-
-<!-- PAGE 3 -->
-<div class="page" id="p3">
-  <div class="big teddy">🧸</div>
-  <h1>Teddy Alert</h1>
-  <p>
-    Yeh teddy sirf dekhne ke liye nahi,<br>
-    thoda sa hug bhi maangta hai 🤍
-  </p>
-  <button class="nav" onclick="show(2)">⬅ Back</button>
-  <button class="nav" onclick="show(4)">Next ➡</button>
-</div>
-
-<!-- PAGE 4 -->
-<div class="page" id="p4">
-  <div class="big ring">💍</div>
-  <h1>So…</h1>
-  <p>
-    Simple sa question hai 😅<br>
-    Kya tum meri gf banogi?
-  </p>
-  <button class="nav" onclick="show(3)">⬅ Back</button>
-  <button class="nav" onclick="show(5)">Next ➡</button>
-</div>
-
-<!-- PAGE 5 -->
-<div class="page" id="p5">
-  <div class="big">❤️</div>
-  <h1>That’s It</h1>
-  <p>
-    Pressure nahi 😄<br>
-    Bas yeh page aur main… tumhe pasand karte hain 💕
-  </p>
-  <button class="nav" onclick="show(4)">⬅ Back</button>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h2>🍫 Sweet Message</h2>
+    <p id="msg"></p>
+    <button onclick="closeModal()">Yum 😋</button>
+  </div>
 </div>
 
 <script>
-const password="piya";
+let wallet = 100;
+const messages = [
+  "Life is sweeter when you smile 😊",
+  "This chocolate is cute… just like you 💕",
+  "One bite, one smile 😄",
+  "Chocolate + you = perfect combo 🍫",
+  "Sweet things remind me of you 💖",
+  "Warning: Too cute to handle 😜"
+];
 
 function unlock(){
-  if(pass.value===password){
+  if(pass.value==="piya"){
     lock.style.display="none";
-    show(1);
-    rain();
-  }else{
-    alert("Oops 😅 try again");
-  }
+    shop.style.display="block";
+  } else alert("Wrong password 😅");
 }
 
-function show(n){
-  document.querySelectorAll('.page').forEach(p=>p.style.display="none");
-  document.getElementById("p"+n).style.display="block";
+function buy(i){
+  if(wallet<100) return alert("Not enough money 😄");
+  wallet-=100;
+  msg.innerText=messages[i];
+  modal.style.display="flex";
+  wallet+=100;
+  money.innerText=wallet;
 }
 
-function rain(){
-  for(let i=0;i<45;i++){
-    let e=document.createElement("div");
-    e.className="float";
-    e.innerText=Math.random()>.5?"💖":"✨";
-    e.style.left=Math.random()*100+"vw";
-    e.style.fontSize=(16+Math.random()*20)+"px";
-    e.style.animationDuration=(4+Math.random()*6)+"s";
-    document.body.appendChild(e);
-  }
+function closeModal(){
+  modal.style.display="none";
 }
 </script>
 
