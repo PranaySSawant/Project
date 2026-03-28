@@ -1,233 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Chocolate Day 🍫</title>
-
+<title>Happy Birthday Piya 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
-/* ===== GLOBAL ===== */
-* {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
 body {
   margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(270deg, #3b1d1d, #6b2f2f, #3b1d1d);
-  background-size: 600% 600%;
-  animation: bg 12s ease infinite;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+  overflow: hidden;
+}
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  height: 100vh;
 }
-@keyframes bg {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-
-/* ===== FLOATING HEARTS ===== */
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 20px;
-  animation: float 6s linear infinite;
-  opacity: 0.6;
-}
-@keyframes float {
-  0% {transform: translateY(0); opacity:0}
-  50% {opacity:1}
-  100% {transform: translateY(-110vh); opacity:0}
-}
-
-/* ===== CARD ===== */
 .card {
-  width: 92%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.6);
   max-width: 420px;
-  padding: 24px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
   text-align: center;
-  color: #fff;
-  animation: pop 0.6s ease;
 }
-@keyframes pop {
-  from {transform: scale(0.9); opacity:0}
-  to {transform: scale(1); opacity:1}
-}
-
 h1 {
-  margin-top: 0;
-  color: #ffd6d6;
+  font-family: 'Dancing Script', cursive;
+  font-size: 44px;
+  color: #ff7aa2;
 }
-
-/* ===== LOCK ===== */
-input {
-  width: 80%;
-  padding: 12px;
-  border-radius: 30px;
-  border: none;
-  text-align: center;
-  font-size: 16px;
+.message {
+  font-size: 15px;
+  margin-top: 15px;
+  line-height: 1.7;
+  min-height: 160px;
+  white-space: pre-line;
 }
 button {
-  margin-top: 16px;
-  padding: 12px 24px;
-  border-radius: 30px;
+  margin-top: 12px;
+  padding: 10px 20px;
+  border-radius: 25px;
   border: none;
-  background: linear-gradient(135deg,#ff8fa3,#ff4d6d);
+  background: linear-gradient(45deg,#ff4d6d,#ff7aa2);
   color: white;
-  font-size: 16px;
   cursor: pointer;
-  transition: transform .2s, box-shadow .2s;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
-button:active {
-  transform: scale(0.95);
-}
-
-/* ===== WALLET ===== */
-.wallet {
-  background: rgba(0,0,0,0.3);
+.chatbox {
+  margin-top: 15px;
+  background: rgba(0,0,0,0.4);
   padding: 10px;
-  border-radius: 20px;
-  margin-bottom: 16px;
+  border-radius: 12px;
+  text-align: left;
+  font-size: 13px;
 }
+.msg { padding:8px; margin:5px 0; border-radius:10px; }
+.me { background:#ff4d6d; }
+.her { background:#333; }/* stars */ .star { position: fixed; width: 2px; height: 2px; background: white; animation: twinkle 2s infinite; } @keyframes twinkle { 50% { opacity: 0.2; } }
 
-/* ===== CHOCOLATES ===== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-.choco {
-  background: rgba(255,255,255,0.25);
-  border-radius: 20px;
-  padding: 16px;
-  cursor: pointer;
-  transition: transform .3s, box-shadow .3s;
-}
-.choco:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
-}
-.choco span {
-  font-size: 36px;
-  display: block;
-}
+/* fireworks */ .firework { position: fixed; width: 5px; height: 5px; background: red; border-radius: 50%; } </style>
 
-/* ===== MODAL ===== */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-.modal-box {
-  background: #fff;
-  color: #333;
-  padding: 24px;
-  border-radius: 24px;
-  width: 85%;
-  max-width: 320px;
-  text-align: center;
-  animation: pop 0.4s ease;
-}
-.modal-box h2 {
-  color: #ff4d6d;
-}
-</style>
 </head>
+<body><div class="container">
+  <div class="card">
+    <h1>Happy Birthday Piya 🎂</h1><div class="message" id="typing"></div>
 
-<body>
+<button onclick="openGift()">🎁 Open Surprise</button>
 
-<!-- FLOATING HEARTS -->
-<script>
-for(let i=0;i<15;i++){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDelay=Math.random()*5+"s";
-  h.innerHTML="💖";
-  document.body.appendChild(h);
+<div class="chatbox" id="chat">
+  <div class="msg me">Hey...</div>
+</div>
+
+  </div>
+</div><script>
+// typing main message
+const text = `Wishing u many many happy returns of the day stay happy 🍾🎂\n\nI m sorry for the things which are happen in past days.\nThanks for being supportive and understanding utni nhi thi but you were ❤️\n\nAnd hn I m literally sorry for making your birthday worst...\nKasam se maine tujhe gift nhi diya last time bhi aur ab bhi...\nBut you never complaint about that and adjusted the situation 💫\n\nIn fact you gave me the money for my survival... that thing hits me again and again.\n\nBaar baar mt kr call aur pdle msg ❤️💫`;
+
+let i = 0;
+function typeEffect(){
+ if(i<text.length){
+  document.getElementById('typing').innerHTML += text.charAt(i);
+  i++;
+  setTimeout(typeEffect,25);
+ }
 }
-</script>
+typeEffect();
 
-<!-- LOCK PAGE -->
-<div class="card" id="lock">
-  <h1>🍫 Chocolate Day</h1>
-  <p>For someone special 💖</p>
-  <input id="pass" placeholder="Enter password">
-  <br>
-  <button onclick="unlock()">Unlock</button>
-</div>
-
-<!-- SHOP -->
-<div class="card" id="shop" style="display:none">
-  <h1>Happy Chocolate Day 🍫</h1>
-
-  <div class="wallet">
-    💰 Wallet: ₹<span id="money">100</span>
-  </div>
-
-  <p>Choose a chocolate 🍫<br>Each costs ₹100</p>
-
-  <div class="grid">
-    <div class="choco" onclick="buy(0)"><span>🍫</span>Dairy Love</div>
-    <div class="choco" onclick="buy(1)"><span>🍩</span>Choco Donut</div>
-    <div class="choco" onclick="buy(2)"><span>🍪</span>Choco Cookie</div>
-    <div class="choco" onclick="buy(3)"><span>🍰</span>Choco Cake</div>
-    <div class="choco" onclick="buy(4)"><span>🍬</span>Choco Candy</div>
-    <div class="choco" onclick="buy(5)"><span>🧁</span>Choco Cupcake</div>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <h2>🍫 Sweet Message</h2>
-    <p id="msg"></p>
-    <button onclick="closeModal()">Yum 😋</button>
-  </div>
-</div>
-
-<script>
-let wallet = 100;
-const messages = [
-  "Life is sweeter when you smile 😊",
-  "This chocolate is cute… just like you 💕",
-  "One bite, one smile 😄",
-  "Chocolate + you = perfect combo 🍫",
-  "Sweet things remind me of you 💖",
-  "Warning: Too cute to handle 😜"
+// chat simulation
+const chats = [
+ "I know I messed up...",
+ "But you still stayed...",
+ "Thank you for everything ❤️",
+ "You really matter"
 ];
+let ci=0;
+function chatFlow(){
+ if(ci<chats.length){
+  let div=document.createElement('div');
+  div.className='msg me';
+  div.innerText=chats[ci];
+  document.getElementById('chat').appendChild(div);
+  ci++;
+  setTimeout(chatFlow,2000);
+ }
+}
+setTimeout(chatFlow,3000);
 
-function unlock(){
-  if(pass.value==="piya"){
-    lock.style.display="none";
-    shop.style.display="block";
-  } else alert("Wrong password 😅");
+// stars
+for(let i=0;i<120;i++){
+ let s=document.createElement('div');
+ s.className='star';
+ s.style.left=Math.random()*100+'vw';
+ s.style.top=Math.random()*100+'vh';
+ document.body.appendChild(s);
 }
 
-function buy(i){
-  if(wallet<100) return alert("Not enough money 😄");
-  wallet-=100;
-  msg.innerText=messages[i];
-  modal.style.display="flex";
-  wallet+=100;
-  money.innerText=wallet;
+// fireworks
+function openGift(){
+ alert('You are really important to me ❤️✨');
+ for(let i=0;i<50;i++){
+  let f=document.createElement('div');
+  f.className='firework';
+  f.style.left=Math.random()*100+'vw';
+  f.style.top=Math.random()*100+'vh';
+  f.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),1000);
+ }
 }
-
-function closeModal(){
-  modal.style.display="none";
-}
-</script>
-
-</body>
+</script></body>
 </html>
