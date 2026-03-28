@@ -10,13 +10,24 @@ body {
   font-family: 'Poppins', sans-serif;
   background: radial-gradient(circle at top, #0f172a, #020617);
   color: white;
-  overflow: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
-.container {
+.section {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 .card {
   background: rgba(255,255,255,0.08);
@@ -25,22 +36,25 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 50px rgba(0,0,0,0.6);
   max-width: 420px;
-  text-align: center;
 }
 h1 {
   font-family: 'Dancing Script', cursive;
-  font-size: 44px;
+  font-size: 46px;
   color: #ff7aa2;
 }
 .message {
   font-size: 15px;
   margin-top: 15px;
   line-height: 1.7;
-  min-height: 160px;
   white-space: pre-line;
 }
+.quote {
+  margin-top: 20px;
+  font-style: italic;
+  opacity: 0.85;
+}
 button {
-  margin-top: 12px;
+  margin-top: 15px;
   padding: 10px 20px;
   border-radius: 25px;
   border: none;
@@ -57,25 +71,50 @@ button {
   font-size: 13px;
 }
 .msg { padding:8px; margin:5px 0; border-radius:10px; }
-.me { background:#ff4d6d; }
-.her { background:#333; }/* stars */ .star { position: fixed; width: 2px; height: 2px; background: white; animation: twinkle 2s infinite; } @keyframes twinkle { 50% { opacity: 0.2; } }
+.me { background:#ff4d6d; }.star { position: fixed; width: 2px; height: 2px; background: white; animation: twinkle 2s infinite; } @keyframes twinkle { 50% { opacity: 0.2; } }
 
-/* fireworks */ .firework { position: fixed; width: 5px; height: 5px; background: red; border-radius: 50%; } </style>
+/* final hidden message */ .hidden { opacity: 0; transition: 1s; } .hidden.show { opacity: 1; } </style>
 
 </head>
-<body><div class="container">
+<body><!-- SECTION 1 --><div class="section">
   <div class="card">
-    <h1>Happy Birthday Piya 🎂</h1><div class="message" id="typing"></div>
-
-<button onclick="openGift()">🎁 Open Surprise</button>
-
-<div class="chatbox" id="chat">
-  <div class="msg me">Hey...</div>
-</div>
-
+    <h1>Happy Birthday Piya 🎂</h1>
+    <div class="quote">"Some people come into our life and quietly change everything." ❤️</div>
+  </div>
+</div><!-- SECTION 2 --><div class="section">
+  <div class="card">
+    <div class="message" id="typing"></div>
+  </div>
+</div><!-- SECTION 3 --><div class="section">
+  <div class="card">
+    <div class="quote">"You were there when I needed someone the most… and I’ll always remember that." 💫</div>
+    <button onclick="openGift()">🎁 Open Surprise</button>
+  </div>
+</div><!-- SECTION 4 --><div class="section">
+  <div class="card">
+    <div class="chatbox" id="chat">
+      <div class="msg me">Hey...</div>
+    </div>
+    <div class="quote">"Not everyone stays… but you did." ❤️</div>
+  </div>
+</div><!-- FINAL SECRET SECTION --><div class="section">
+  <div class="card">
+    <div class="quote hidden" id="finalMsg">"No matter what happens… you’ll always have a special place in my heart." ❤️</div>
+    <button onclick="revealFinal()">Unlock Final Message 🔐</button>
   </div>
 </div><script>
-// typing main message
+// scroll animation
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+ sections.forEach(sec => {
+  const top = sec.getBoundingClientRect().top;
+  if(top < window.innerHeight - 100){
+    sec.classList.add('show');
+  }
+ });
+});
+
+// typing message
 const text = `Wishing u many many happy returns of the day stay happy 🍾🎂\n\nI m sorry for the things which are happen in past days.\nThanks for being supportive and understanding utni nhi thi but you were ❤️\n\nAnd hn I m literally sorry for making your birthday worst...\nKasam se maine tujhe gift nhi diya last time bhi aur ab bhi...\nBut you never complaint about that and adjusted the situation 💫\n\nIn fact you gave me the money for my survival... that thing hits me again and again.\n\nBaar baar mt kr call aur pdle msg ❤️💫`;
 
 let i = 0;
@@ -117,18 +156,14 @@ for(let i=0;i<120;i++){
  document.body.appendChild(s);
 }
 
-// fireworks
+// gift
 function openGift(){
  alert('You are really important to me ❤️✨');
- for(let i=0;i<50;i++){
-  let f=document.createElement('div');
-  f.className='firework';
-  f.style.left=Math.random()*100+'vw';
-  f.style.top=Math.random()*100+'vh';
-  f.style.background=`hsl(${Math.random()*360},100%,50%)`;
-  document.body.appendChild(f);
-  setTimeout(()=>f.remove(),1000);
- }
+}
+
+// final message
+function revealFinal(){
+ document.getElementById('finalMsg').classList.add('show');
 }
 </script></body>
 </html>
